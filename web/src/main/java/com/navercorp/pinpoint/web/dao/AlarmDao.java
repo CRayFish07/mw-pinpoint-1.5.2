@@ -43,6 +43,8 @@ public interface AlarmDao {
     void deleteCheckerResult(CheckerResult checkerResult);
 
     void insertCheckerResult(CheckerResult checkerResult);
+    
+    void updateCheckerResult(CheckerResult checkerResult);
 
     void updateUserGroupIdOfRule(UserGroup userGroup);
 }

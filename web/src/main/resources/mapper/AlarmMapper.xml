@@ -63,4 +63,10 @@
             (#{applicationId}, #{checkerName}, #{detected}, #{sequenceCount}, #{timingCount})
     </insert>
     
+    <update id="updateCheckerResult" parameterType="ChecherResult">
+        update alarm_history 
+           SET application_id = #{applicationId}, checker_name = #{checkerName}, detected = #{detected}, sequence_count = #{sequenceCount}, timing_count = #{timingCount}
+         WHERE application_id = #{applicationId} AND checker_name = #{checkerName}
+    </update>
+    
 </mapper>

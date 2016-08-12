@@ -90,4 +90,9 @@ public class MysqlAlarmDao implements AlarmDao {
         sqlSessionTemplate.insert(NAMESPACE + "insertCheckerResult", checkerResult);
     }
 
+    @Override
+    public void updateCheckerResult(CheckerResult checkerResult) {
+        sqlSessionTemplate.update(NAMESPACE + "updateCheckerResult", checkerResult);
+    }
+
 }

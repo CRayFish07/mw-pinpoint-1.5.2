@@ -79,17 +79,19 @@ public class AlarmServiceImpl implements AlarmService {
 
     @Override
     public void updateBeforeCheckerResult(CheckerResult beforeCheckerResult, AlarmChecker checker) {
-        alarmDao.deleteCheckerResult(beforeCheckerResult);
+//        alarmDao.deleteCheckerResult(beforeCheckerResult);
         
+        CheckerResult checkerResult = beforeCheckerResult;
         if (checker.isDetected()) {
             beforeCheckerResult.setDetected(true);
             beforeCheckerResult.increseCount();
-            alarmDao.insertCheckerResult(beforeCheckerResult);
+//            alarmDao.insertCheckerResult(beforeCheckerResult);
         } else {
-            alarmDao.insertCheckerResult(new CheckerResult(checker.getRule().getApplicationId(), checker.getRule().getCheckerName(), false, 0, 1));
+            checkerResult = new CheckerResult(checker.getRule().getApplicationId(), checker.getRule().getCheckerName(), false, 0, 1);
+//            alarmDao.insertCheckerResult(new CheckerResult(checker.getRule().getApplicationId(), checker.getRule().getCheckerName(), false, 0, 1));
         }
         
-         
+         alarmDao.updateCheckerResult(checkerResult);
     }
 
     @Override

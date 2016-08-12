@@ -129,4 +129,8 @@ public class MemoryAlarmDao implements AlarmDao {
     public void insertCheckerResult(CheckerResult checkerResult) {
     }
 
+    @Override
+    public void updateCheckerResult(CheckerResult checkerResult) {
+    }
+
 }

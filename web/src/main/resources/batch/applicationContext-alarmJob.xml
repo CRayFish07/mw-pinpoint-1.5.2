@@ -25,7 +25,8 @@
     </job>
 
     <step id="alarmStep" xmlns="http://www.springframework.org/schema/batch">
-        <tasklet>
+        <!-- <tasklet> -->
+        <tasklet task-executor="poolTaskExecutorForStep" throttle-limit="3">
             <chunk reader="reader" processor="processor" writer="writer" commit-interval="1"/>
         </tasklet>
     </step>
@@ -35,5 +36,6 @@
     <bean id="processor" class="com.navercorp.pinpoint.web.alarm.AlarmProcessor" scope="step"/>
     <bean id="writer" class="com.navercorp.pinpoint.web.alarm.AlarmWriter" scope="step"/>
     
-    <task:executor id="poolTaskExecutorForPartition" pool-size="1" />
+    <task:executor id="poolTaskExecutorForPartition" pool-size="2" />
+    <task:executor id="poolTaskExecutorForStep" pool-size="10" />
 </beans>
